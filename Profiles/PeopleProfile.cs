@@ -8,7 +8,11 @@ namespace PersonAPI.Profiles
     {
         public PeopleProfile()
         {
-            CreateMap<Person, PersonDto>();
+            // Source -> Destination
+            CreateMap<Person, PersonReadDto>()
+                .ForMember(dest => dest.Age, opt => opt.MapFrom(src => src.YearsAlive));
+
+            CreateMap<PersonCreateDto, Person>();
         }
     }
 }
