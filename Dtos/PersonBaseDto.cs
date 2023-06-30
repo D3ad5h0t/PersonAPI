@@ -15,5 +15,7 @@ namespace PersonAPI.Dtos
 
         [Required]
         public string? DoB { get; set; }
+
+        public string? Points { get; set; }
     }
 }

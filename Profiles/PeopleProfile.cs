@@ -13,10 +13,13 @@ namespace PersonAPI.Profiles
                 .ForMember(dest => dest.Age, opt => opt.MapFrom<AgeResolver>());
 
             CreateMap<PersonCreateDto, Person>()
-                .ForMember(dest => dest.FullName, opt => opt.MapFrom(new FullNameResolver()!));
+                .ForMember(dest => dest.FullName, opt => opt.MapFrom(new FullNameResolver()!))
+                .ForMember(dest => dest.House, opt => opt.NullSubstitute("Gryffindor"));
 
             CreateMap<PersonUpdateDto, Person>()
                 .ForMember(dest => dest.FullName, opt => opt.MapFrom(new FullNameResolver()!));
+
+            CreateMap<string, int>().ConvertUsing<IntTypeConverter>();
         }
     }
 }
