@@ -10,9 +10,13 @@ namespace PersonAPI.Profiles
         {
             // Source -> Destination
             CreateMap<Person, PersonReadDto>()
-                .ForMember(dest => dest.Age, opt => opt.MapFrom(src => src.YearsAlive));
+                .ForMember(dest => dest.Age, opt => opt.MapFrom<AgeResolver>());
 
-            CreateMap<PersonCreateDto, Person>();
+            CreateMap<PersonCreateDto, Person>()
+                .ForMember(dest => dest.FullName, opt => opt.MapFrom(new FullNameResolver()!));
+
+            CreateMap<PersonUpdateDto, Person>()
+                .ForMember(dest => dest.FullName, opt => opt.MapFrom(new FullNameResolver()!));
         }
     }
 }

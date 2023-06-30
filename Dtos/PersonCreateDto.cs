@@ -2,15 +2,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace PersonAPI.Dtos
 {
-    public class PersonCreateDto
+    public class PersonCreateDto : PersonBaseDto
     {
-        [Required]
-        public string? FullName { get; set; }
-
-        [Required]
-        public string? Telephone { get; set; }
-
-        [Required]
-        public string? DoB { get; set; }
+        public string? House { get; set; }
     }
 }
